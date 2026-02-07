@@ -4,7 +4,7 @@ A Python toolkit for Dynamic Stochastic General Equilibrium (DSGE) modeling.
 
 ## Status
 
-- Version: `0.1.0.dev0` (alpha pre-release)
+- Version: `0.1.0` (initial public release)
 - API stability: evolving
 - Minimum Python version: `3.13` (from `pyproject.toml`)
 
