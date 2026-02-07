@@ -1,0 +1,113 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dsgekit"
+dynamic = ["version"]
+description = "A Python toolkit for DSGE models"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.13"
+authors = [
+    { name = "Gustavo Vargas", email = "ge.vargasn@gmail.com" },
+]
+keywords = [
+    "dsge",
+    "macroeconomics",
+    "economics",
+    "state-space",
+    "kalman-filter",
+    "impulse-response",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.14",
+    "pandas>=2.2",
+]
+
+[project.optional-dependencies]
+sym = ["sympy>=1.13"]
+plot = ["matplotlib>=3.9"]
+speed = ["numba>=0.60"]
+jax = ["jax>=0.4", "jaxlib>=0.4"]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.4",
+    "mypy>=1.10",
+    "pre-commit>=3.7",
+]
+all = [
+    "dsgekit[sym]",
+    "dsgekit[plot]",
+    "dsgekit[speed]",
+    "dsgekit[dev]",
+]
+
+[project.scripts]
+dsgekit = "dsgekit.cli.main:main"
+
+[project.urls]
+Homepage = "https://github.com/gustavovargas/dsgekit"
+Documentation = "https://github.com/gustavovargas/dsgekit#readme"
+Repository = "https://github.com/gustavovargas/dsgekit"
+Issues = "https://github.com/gustavovargas/dsgekit/issues"
+
+[tool.hatch.version]
+path = "src/dsgekit/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dsgekit"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes
+    "I",      # isort
+    "B",      # flake8-bugbear
+    "C4",     # flake8-comprehensions
+    "UP",     # pyupgrade
+]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["dsgekit"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.mypy]
+python_version = "3.13"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.coverage.run]
+source = ["src/dsgekit"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+]
