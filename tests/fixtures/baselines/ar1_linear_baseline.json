@@ -1,0 +1,36 @@
+{
+  "name": "AR1 linear baseline (reference)",
+  "source": "reference-solver",
+  "model_path": "../models/ar1.mod",
+  "periods": 8,
+  "tolerances": {
+    "matrix_atol": 1e-12,
+    "matrix_rtol": 1e-12,
+    "irf_atol": 1e-12,
+    "irf_rtol": 1e-12
+  },
+  "solution": {
+    "var_names": ["y"],
+    "shock_names": ["e"],
+    "n_stable": 1,
+    "n_unstable": 0,
+    "n_predetermined": 1,
+    "T": [[0.9]],
+    "R": [[1.0]]
+  },
+  "irfs": {
+    "e": {
+      "columns": ["y"],
+      "data": [
+        [1.0],
+        [0.9],
+        [0.81],
+        [0.729],
+        [0.6561],
+        [0.59049],
+        [0.531441],
+        [0.4782969]
+      ]
+    }
+  }
+}
