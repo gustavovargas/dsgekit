@@ -26,7 +26,7 @@
 ## Checklist
 
 - [ ] I read `CONTRIBUTING.md`.
-- [ ] I confirm this PR is my original work under the repo MIT license.
+- [ ] I confirm this PR is my original work under the repo Apache-2.0 license.
 - [ ] I am not including secrets or private credentials.
 
 ## Related Issues

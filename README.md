@@ -113,4 +113,4 @@ python examples/reference_model_zoo.py
 
 ## License
 
-MIT
+Apache-2.0
